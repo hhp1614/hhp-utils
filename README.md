@@ -16,10 +16,16 @@ npm i hhp-utils
 ## 如何使用
 
 ```typescript
+// 按需引入
 import { getUrlParams } from 'hhp-utils';
+// 全部引入
+import * as utils from 'hhp-utils';
 
-const urlParams = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
-console.log('urlParams', urlParams);
+const urlParams1 = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
+console.log('urlParams1', urlParams1);
+
+const urlParams2 = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
+console.log('urlParams2', urlParams2);
 ```
 
 ## API
