@@ -7,5 +7,4 @@ test('getUrlParams', () => {
     pass: '123',
   };
   expect(getUrlParams(url)).toEqual(res);
-  // expect(getUrlParams(url)).toBe(res);
 });
