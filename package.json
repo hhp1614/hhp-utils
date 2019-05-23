@@ -19,7 +19,9 @@
     "postversion": "git push && git push --tags",
     "release": "standard-version"
   },
-  "keywords": [],
+  "keywords": [
+    "utils"
+  ],
   "author": "",
   "license": "ISC",
   "repository": {

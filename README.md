@@ -1,57 +1,33 @@
-# 项目名
+# hhp-utils
 
-项目简介
+代码工具库
 
-## 特性
+- getUrlParams: 获取 URL 参数对象
 
-特性简介
-
-- 特性 1
-- 特性 2
-
-## 如何修改本项目为你自己的项目
+## 安装使用
 
 ```shell
-git clone https://github.com/xiaomingplus/npm-typescript-boilerplate.git your-project-name
-cd your-project-name
-# 安装依赖
-yarn i
-# 开始开发
-yarn start
-# 修改 package.json 里面的项目名和简介
-# 修改 README.md 文件内容
-# 修改 远程仓库的地址
-git remote set-url origin <your-git-url>
-```
-
-## 如何安装
-
-(修改为你自己的：
-
-```shell
-npm i npm-typescript-boilerplate
+npm i hhp-utils
 ```
 
 ## 如何使用
 
-(修改为你自己的
-
 ```typescript
-import { Greeter } from '@tencent/typescript-boilerplate';
+import { getUrlParams } from '@tencent/typescript-boilerplate';
 
-const str = Greeter('Bob');
-console.log('str', str);
+const obj = getUrlParams();
+console.log('obj', obj);
 ```
 
 ## API
 
-(修改为你自己的
+getUrlParams: 获取 URL 参数对象，不传参数则默认使用 `window.location.href`
 
-这里列出所有的 API，如果有很多的话，建议这里只写索引，具体的参数信息可以导航到 docs 目录下的文件
+```typescript
+getUrlParams(url = window.location.href): string;
+```
 
 ## 如何开发
-
-(修改为你自己的
 
 ```shell
 yarn
@@ -66,15 +42,4 @@ yarn start
 
 ```shell
 yarn commit
-```
-
-### 如何打包发布
-
-(修改为你自己的
-
-```shell
-cd npm-typescript-boilerplate
-# 自动打tag和生成changelog,并修改package.json
-npm run release
-npm publish
 ```
