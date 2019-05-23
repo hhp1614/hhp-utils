@@ -24,7 +24,7 @@ import * as utils from 'hhp-utils';
 const urlParams1 = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
 console.log('urlParams1', urlParams1);
 
-const urlParams2 = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
+const urlParams2 = utils.getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
 console.log('urlParams2', urlParams2);
 ```
 
