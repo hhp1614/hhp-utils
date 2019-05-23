@@ -1,6 +1,6 @@
 {
   "name": "hhp-utils",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "utils",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
