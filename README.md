@@ -15,7 +15,7 @@ npm i hhp-utils
 
 ## 如何使用
 
-```typescript
+```ts
 // 按需引入
 import { getUrlParams } from 'hhp-utils';
 // 全部引入
@@ -30,9 +30,9 @@ console.log('urlParams2', urlParams2);
 
 ## API
 
-getUrlParams: 获取 URL 参数对象，不传参数则默认使用 `window.location.href`
+`getUrlParams`: 获取 URL 参数对象，不传参数则默认使用 `window.location.href`
 
-```typescript
+```ts
 getUrlParams(url = window.location.href): string;
 
 // 例子
@@ -43,12 +43,15 @@ console.log('urlParams', urlParams);
 // => { name: 'hhp1614', pass: '1234' }
 ```
 
-## 如何开发
+`randomColor`: 返回随机颜色，如 `#a1b2c3`
 
-```shell
-yarn
-yarn start
+```ts
+import { randomColor } from 'hhp-utils';
+
+const color = randomColor();
 ```
+
+## 说明
 
 本项目采用[prettier](https://prettier.io/)来统一代码风格，并且会在`pre-commit`前自动 format 你本次提交的代码，推荐你在你的编辑器里安装 prettier 插件，并且开启保存文件就自动 format 选项，这样可以在开发的时候，就能自动 format
 
