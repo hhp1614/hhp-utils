@@ -10,21 +10,23 @@
 2. `npm` 安装
 
 ```shell
-npm i hhp-utils
+npm install hhp-utils --save
 ```
 
 ## 如何使用
 
 ```ts
-// 按需引入
+// 按需引入（推荐）
 import { getUrlParams } from 'hhp-utils';
-// 全部引入
-import * as utils from 'hhp-utils';
 
 const urlParams1 = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
 console.log('urlParams1', urlParams1);
 
-const urlParams2 = utils.getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
+// 全部引入
+import * as utils from 'hhp-utils';
+
+const url = 'https://hhp1614.com/?name=hhp1614&pass=1234';
+const urlParams2 = utils.getUrlParams(url);
 console.log('urlParams2', urlParams2);
 ```
 
