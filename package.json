@@ -1,6 +1,6 @@
 {
   "name": "hhp-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "utils",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,7 +16,7 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
+    "postversion": "git add . && git commit -m \"add min file\" && git push && git push --tags",
     "release": "standard-version"
   },
   "keywords": [
