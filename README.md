@@ -19,23 +19,27 @@ yarn add hhp-utils --save
 
 ```ts
 // 按需引入（推荐）
-import { url } from 'hhp-utils';
-
-const u = 'https://hhp1614.com/?name=hhp1614&pass=1234';
-const urlParams1 = url.getUrlParams(u);
-console.log('urlParams1', urlParams1);
-
-// 全部引入
-import hhpUtils from 'hhp-utils';
+import { getUrlParams } from 'hhp-utils';
 
 const url = 'https://hhp1614.com/?name=hhp1614&pass=1234';
-const urlParams2 = hhpUtils.getUrlParams(url);
-console.log('urlParams2', urlParams2);
+const urlParams = getUrlParams(url);
+
+console.log('urlParams', urlParams);
+```
+
+```ts
+// 全部引入
+import * as hhpUtils from 'hhp-utils';
+
+const url = 'https://hhp1614.com/?name=hhp1614&pass=1234';
+const urlParams = hhpUtils.getUrlParams(url);
+
+console.log('urlParams', urlParams);
 ```
 
 - 浏览器使用
 
-直接下载 `dist/web` 目录下的 [`hhp-utils.min.js`](https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.js) 使用
+直接下载 `dist` 目录下的 [`hhp-utils.min.js`](https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.js) 使用
 
 ```html
 <script src="https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.js"></script>
