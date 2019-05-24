@@ -64,7 +64,7 @@ console.log('urlParams', urlParams);
 
 - [`type`](#type)
 
-  - [`type`](#type)
+  - [`type`](#type): 返回数据类型
 
 ## API
 
