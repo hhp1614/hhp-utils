@@ -2,6 +2,8 @@
 
 代码工具库
 
+为避免在不同项目中多次复制粘贴，这里把日常可能会使用到的函数整合起来，统一封装，并发布到 npm。
+
 ## 安装
 
 1. `npm` 或 `yarn` 安装
@@ -93,3 +95,9 @@ import { randomColor } from 'hhp-utils';
 
 const color = randomColor();
 ```
+
+## 说明
+
+本项目使用 `typescript` 开发，编译采用 `commonJS`、`ESNext` 的模块规范，使用 `webpack` 打包以支持浏览器直接调用。
+
+使用 `mocha` + `chai` + `ts-node` 进行单元测试.
