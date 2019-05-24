@@ -1,6 +1,6 @@
 {
   "name": "hhp-utils",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "utils",
   "main": "dist/hhp-utils.umd.js",
   "module": "dist/hhp-utils.esm.js",
