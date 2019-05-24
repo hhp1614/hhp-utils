@@ -2,9 +2,9 @@
   "name": "hhp-utils",
   "version": "2.0.4",
   "description": "utils",
-  "main": "dist/common/main.js",
-  "module": "dist/esnext/main.js",
-  "types": "dist/common/main.d.ts",
+  "main": "dist/hhp-utils.umd.js",
+  "module": "dist/hhp-utils.esm.js",
+  "types": "dist/main.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "build": "bili src/main.ts --file-name hhp-utils[min].[format].js --format umd,umd-min,esm,esm-min --module-name hhpUtils --global.final-from final-from",
