@@ -54,17 +54,17 @@ console.log('urlParams', urlParams);
 
 ## 目录
 
-- [`url`](#`url`)
+- [`url`](#url)
 
-  - [`getUrlParams`](#`getUrlParams`): 获取 URL 参数对象
+  - [`getUrlParams`](#getUrlParams): 获取 URL 参数对象
 
-- [`random`](#`random`)
+- [`random`](#random)
 
-  - [`randomColor`](#`randomColor`): 返回随机颜色
+  - [`randomColor`](#randomColor): 返回随机颜色
 
-- [`type`](#`type`)
+- [`type`](#type)
 
-  - [`type`](#`type`)
+  - [`type`](#type)
 
 ## API
 
