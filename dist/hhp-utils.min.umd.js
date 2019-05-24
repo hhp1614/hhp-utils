@@ -1,0 +1,2 @@
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e=e||self).hhpUtils={})}(this,function(e){"use strict";e.getUrlParams=function(e){void 0===e&&(e=window.location.href);var t={};return e.replace(/([^?&=]+)=([^?&]+)/g,function(e,n,o){return t[n]=o}),t},e.randomColor=function(){return"#"+Math.floor(16777215*Math.random()).toString(16).padEnd(6,"0")},Object.defineProperty(e,"__esModule",{value:!0})});
+//# sourceMappingURL=hhp-utils.min.umd.js.map

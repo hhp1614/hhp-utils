@@ -1,8 +1,10 @@
 node_modules
+.rpt2_cache
 
 *.log
 *.zip
 .DS_Store
+
 
 .vscode
 .idea
