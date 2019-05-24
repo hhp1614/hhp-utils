@@ -9,7 +9,7 @@
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "build:common": "tsc --outDir dist/common",
     "build:esnext": "tsc --module ESNext --outDir dist/esnext",
-    "build:web": "webpack dist/common/main.js -o dist/web/hhp-utils.min.js",
+    "build:web": "webpack",
     "build": "npm run build:common && npm run build:esnext && npm run build:web",
     "prepublish": "npm run test && npm run build",
     "postversion": "git push --tags"
