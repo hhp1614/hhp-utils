@@ -12,7 +12,7 @@
     "build:web": "webpack",
     "build": "npm run build:common && npm run build:esnext && npm run build:web",
     "prepublishOnly": "npm run test && npm run build",
-    "postversion": "git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "utils"
