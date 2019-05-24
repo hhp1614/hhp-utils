@@ -120,6 +120,6 @@ const arrType = type([]); // 'array'
 
 ## 说明
 
-本项目使用 `typescript` 开发，编译采用 `UMD`、`ESNext`。
+本项目使用 `typescript` 开发，编译采用 `UMD`、`ESNext` 模块规范。
 
 使用 `mocha` + `chai` + `ts-node` 进行单元测试.
