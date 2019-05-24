@@ -41,7 +41,7 @@ console.log('urlParams', urlParams);
 
 - 浏览器使用
 
-直接下载 `dist` 目录下的 [`hhp-utils.min.js`](https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.js) 使用
+直接下载 `dist` 目录下的 [`hhp-utils.min.umd.js`](https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.umd.js) 或者 [`hhp-utils.umd.js`](https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.umd.js) 使用
 
 ```html
 <script src="https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.js"></script>
