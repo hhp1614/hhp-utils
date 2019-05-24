@@ -58,9 +58,13 @@ console.log('urlParams', urlParams);
 
   - [`getUrlParams`](#`getUrlParams`): 获取 URL 参数对象
 
-* [`random`](#`random`)
+- [`random`](#`random`)
 
   - [`randomColor`](#`randomColor`): 返回随机颜色
+
+- [`type`](#`type`)
+
+  - [`type`](#`type`)
 
 ## API
 
@@ -96,8 +100,26 @@ import { randomColor } from 'hhp-utils';
 const color = randomColor();
 ```
 
+### `type`
+
+#### `type`
+
+返回数据类型
+
+返回值：`number`、`string`、`boolean`、`undefined`、`null`、`object`、`array`、`date`、`error`、`regexp`、`function`、`math`、`json`、`symbol`
+
+```ts
+type(variable: any): string;
+
+// 例子
+import { type } from 'hhp-utils';
+
+const numType = type(123); // 'number'
+const arrType = type([]); // 'array'
+```
+
 ## 说明
 
-本项目使用 `typescript` 开发，编译采用 `commonJS`、`ESNext` 的模块规范，使用 `webpack` 打包以支持浏览器直接调用。
+本项目使用 `typescript` 开发，编译采用 `UMD`、`ESNext`。
 
 使用 `mocha` + `chai` + `ts-node` 进行单元测试.
