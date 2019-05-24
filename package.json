@@ -1,6 +1,6 @@
 {
   "name": "hhp-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "utils",
   "main": "dist/common/main.js",
   "module": "dist/esnext/main.js",
