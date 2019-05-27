@@ -54,75 +54,37 @@ console.log('urlParams', urlParams)
 
 ## 目录
 
-- [`url`](#url)
+- [`device`](#device)
 
-  - [`getUrlParams`](#getUrlParams): 获取 URL 参数对象
+  - [`getExplore`](#getExplore) 返回浏览器类型及版本
+  - [`getOS`](#getOS) 返回操作系统类型
+  - [`isMobile`](#isMobile) 是否为移动端
+
+- [`format`](#format)
+
+  - [`milliFormat`](#milliFormat) 数字千位分隔符
 
 - [`random`](#random)
 
-  - [`randomColor`](#randomColor): 返回随机颜色
+  - [`randomColor`](#randomColor) 返回指定范围随机数
+  - [`randomNum`](#randomNum) 返回随机数
+
+- [`regexp`](#regexp)
+
+  - [`isEmail`](#isEmail) 判断是否为邮箱地址
+  - [`isIdCard`](#isIdCard) 判断是否为身份证号
+  - [`isPhoneNum`](#isPhoneNum) 判断是否为手机号
+  - [`isUrl`](#isUrl) 判断是否为 URL 地址
 
 - [`type`](#type)
 
-  - [`type`](#type): 返回数据类型
+  - [`type`](#type) 返回数据类型
 
-- [`device`](#device)
+- [`url`](#url)
 
-  - [`getExplore`](#getExplore): 返回浏览器类型及版本
-  - [`getOS`](#getOS): 返回操作系统类型
-  - [`isMobile`](#isMobile): 是否为移动端
+  - [`getUrlParams`](#getUrlParams) 获取 URL 参数对象
 
 ## API
-
-### `url`
-
-#### `getUrlParams`
-
-获取 URL 参数对象，不传参数则默认使用 `window.location.href`
-
-```ts
-getUrlParams(url = window.location.href): string
-
-// 例子
-import { getUrlParams } from 'hhp-utils'
-
-const urlParams = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234')
-console.log('urlParams', urlParams)
-// => { name: 'hhp1614', pass: '1234' }
-```
-
-### `random`
-
-#### `randomColor`
-
-返回随机颜色，如 `#a1b2c3`
-
-```ts
-randomColor(): string
-
-// 例子
-import { randomColor } from 'hhp-utils'
-
-const color = randomColor()
-```
-
-### `type`
-
-#### `type`
-
-返回数据类型
-
-返回值：`number`、`string`、`boolean`、`undefined`、`null`、`object`、`array`、`date`、`error`、`regexp`、`function`、`math`、`json`、`symbol`
-
-```ts
-type(variable: any): string
-
-// 例子
-import { type } from 'hhp-utils'
-
-const numType = type(123) // 'number'
-const arrType = type([]) // 'array'
-```
 
 ### `device`
 
@@ -171,6 +133,149 @@ isMobile(ua: string = navigator.userAgent): boolean
 import { isMobile } from 'hhp-utils'
 
 isMobile()
+```
+
+### `format`
+
+#### `milliFormat`
+
+数字千位分隔符
+
+```ts
+milliFormat(value: string | number, fixed?: number): string
+
+// 例子
+import { milliFormat } from 'hhp-utils'
+
+milliFormat(123456) // => 123,456
+milliFormat(123456.789, 2) // => 123,456.79
+```
+
+| 参数    | 类型              | 说明                |
+| ------- | ----------------- | ------------------- |
+| `value` | `number | string` | 传入的值            |
+| `fixed` | `number`          | 保留 `fixed` 位小数 |
+
+### `random`
+
+#### `randomColor`
+
+返回随机颜色，如 `#a1b2c3`
+
+```ts
+randomColor(): string
+
+// 例子
+import { randomColor } from 'hhp-utils'
+
+const color = randomColor()
+```
+
+#### `randomNum`
+
+返回指定范围随机数
+
+```ts
+randomNum(min: number, max: number): number
+
+// 例子
+import { randomNum } from 'hhp-utils'
+
+const num = randomNum(10, 20)
+```
+
+| 参数  | 类型     | 默认值 |
+| ----- | -------- | ------ |
+| `min` | `number` | `0`    |
+| `max` | `number` | `1`    |
+
+### `regexp`
+
+#### `isEmail`
+
+判断是否为邮箱地址
+
+```ts
+isEmail(str: string): boolean
+
+// 例子
+import { isEmail } from 'hhp-utils'
+
+isEmail('hhp1614@gmail.com') // true
+```
+
+#### `isIdCard`
+
+判断是否为身份证号
+
+```ts
+isIdCard(str: string | number): boolean
+
+// 例子
+import { isIdCard } from 'hhp-utils'
+
+isIdCard(123456789012345678) // false
+```
+
+#### `isPhoneNum`
+
+判断是否为手机号
+
+```ts
+isPhoneNum(str: string | number): boolean
+
+// 例子
+import { isPhoneNum } from 'hhp-utils'
+
+isPhoneNum(12345689012) // false
+```
+
+#### `isUrl`
+
+判断是否为 URL 地址
+
+```ts
+isUrl(str: string): boolean
+
+// 例子
+import { isUrl } from 'hhp-utils'
+
+isUrl('https://hhp1614.com') // true
+```
+
+### `type`
+
+#### `type`
+
+返回数据类型
+
+返回值：`number`、`string`、`boolean`、`undefined`、`null`、`object`、`array`、`date`、`error`、`regexp`、`function`、`math`、`json`、`symbol`
+
+```ts
+type(variable: any): string
+
+// 例子
+import { type } from 'hhp-utils'
+
+const numType = type(123) // 'number'
+const arrType = type([]) // 'array'
+```
+
+### `url`
+
+#### `getUrlParams`
+
+获取 URL 参数对象，不传参数则默认使用 `window.location.href`
+
+```ts
+getUrlParams(url = window.location.href): string
+
+// 例子
+import { getUrlParams } from 'hhp-utils'
+
+const urlParams = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234')
+console.log('urlParams', urlParams)
+// => { name: 'hhp1614', pass: '1234' }
 ```
 
 ## 说明
