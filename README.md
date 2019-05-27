@@ -251,7 +251,7 @@ isUrl('https://hhp1614.com') // true
 
 #### `timeFormat`
 
-时间格式化
+时间格式化，返回格式：YYYY-MM-DD HH:mm:ss
 
 ```ts
 timeFormat(time: number = +new Date()): string
