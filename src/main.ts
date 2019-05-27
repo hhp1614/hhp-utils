@@ -19,5 +19,8 @@ export { isUrl } from './regexp/isUrl'
 // url
 export { getUrlParams } from './url/getUrlParams'
 
+// time
+export { timeFormat } from './time/timeFormat'
+
 // type
 export { type } from './type/type'

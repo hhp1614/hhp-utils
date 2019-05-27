@@ -76,6 +76,10 @@ console.log('urlParams', urlParams)
   - [`isPhoneNum`](#isPhoneNum) 判断是否为手机号
   - [`isUrl`](#isUrl) 判断是否为 URL 地址
 
+- [`time`](#time)
+
+  - [`timeFormat`](#timeFormat) 时间格式化
+
 - [`type`](#type)
 
   - [`type`](#type) 返回数据类型
@@ -242,6 +246,26 @@ import { isUrl } from 'hhp-utils'
 
 isUrl('https://hhp1614.com') // true
 ```
+
+### `time`
+
+#### `timeFormat`
+
+时间格式化
+
+```ts
+timeFormat(time: number = +new Date()): string
+
+// 例子
+import { timeFormat } from 'hhp-utils'
+
+const time = +new Date('2019-5-27 18:5:35')
+timeFormat(time) // 2019-05-27 18:05:35
+```
+
+| 参数   | 类型     | 默认值        | 说明                           |
+| ------ | -------- | ------------- | ------------------------------ |
+| `time` | `number` | `+new Date()` | 毫秒数，默认为当前时间的毫秒数 |
 
 ### `type`
 

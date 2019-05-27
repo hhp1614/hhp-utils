@@ -9,4 +9,5 @@ export { isIdCard } from './regexp/isIdCard';
 export { isPhoneNum } from './regexp/isPhoneNum';
 export { isUrl } from './regexp/isUrl';
 export { getUrlParams } from './url/getUrlParams';
+export { timeFormat } from './time/timeFormat';
 export { type } from './type/type';

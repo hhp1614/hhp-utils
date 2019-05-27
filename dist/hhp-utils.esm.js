@@ -1,6 +1,6 @@
 /**
  * 获取浏览器信息
- * @param ua {string} UserAgent 默认取当前 UA
+ * @param   {String} ua UserAgent 默认取当前 UA
  * @returns {IExplore} 浏览器信息对象
  */
 var getExplore = function getExplore(ua) {
@@ -44,7 +44,7 @@ var getExplore = function getExplore(ua) {
 
 /**
  * 获取操作系统类型
- * @returns {string} 操作系统类型
+ * @returns {String}
  */
 var getOS = function getOS() {
   try {
@@ -64,7 +64,7 @@ var getOS = function getOS() {
 
 /**
  * 判断是否为移动端
- * @returns {boolean} 是否为移动端
+ * @returns {Boolean}
  */
 var isMobile = function isMobile(ua) {
   if (ua === void 0) {
@@ -76,9 +76,9 @@ var isMobile = function isMobile(ua) {
 
 /**
  * 数字千位分隔符
- * @param {string | number} value   需要处理的数字
- * @param {number} fixed 需要保留的小数位，不传则保留所有小数
- * @returns {string}
+ * @param   {String | Number} value 需要处理的数字
+ * @param   {Number}          fixed 需要保留的小数位，不传则保留所有小数
+ * @returns {String}
  */
 var milliFormat = function milliFormat(value, fixed) {
   var reg = /\B(?=(\d{3})+(?=\b))(?<=\b(?<!\.)\d*)/g;
@@ -89,7 +89,7 @@ var milliFormat = function milliFormat(value, fixed) {
 
 /**
  * 随机 16 进制颜色
- * @returns {string} 16 进制颜色
+ * @returns {String}
  */
 var randomColor = function randomColor() {
   return "#" + Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0');
@@ -97,9 +97,9 @@ var randomColor = function randomColor() {
 
 /**
  * 生成指定范围随机数
- * @param {number} min 最小值
- * @param {number} max 最大值
- * @returns {number} 随机数
+ * @param   {Number} min 最小值
+ * @param   {Number} max 最大值
+ * @returns {Number}
  */
 var randomNum = function randomNum(min, max) {
   if (min === void 0) {
@@ -115,8 +115,8 @@ var randomNum = function randomNum(min, max) {
 
 /**
  * 判断是否为邮箱地址
- * @param   {string} str
- * @returns {boolean}
+ * @param   {String} str
+ * @returns {Boolean}
  */
 var isEmail = function isEmail(str) {
   return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(str);
@@ -124,8 +124,8 @@ var isEmail = function isEmail(str) {
 
 /**
  * 判断是否为身份证号
- * @param   {string | number} str
- * @returns {boolean}
+ * @param   {String | Number} str
+ * @returns {Boolean}
  */
 var isIdCard = function isIdCard(str) {
   return /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/.test("" + str);
@@ -133,8 +133,8 @@ var isIdCard = function isIdCard(str) {
 
 /**
  * 判断是否为手机号
- * @param  {string | number} str
- * @return {boolean}
+ * @param  {String | Number} str
+ * @return {Boolean}
  */
 var isPhoneNum = function isPhoneNum(str) {
   return /^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test("" + str);
@@ -142,8 +142,8 @@ var isPhoneNum = function isPhoneNum(str) {
 
 /**
  * 判断是否为 URL 地址
- * @param  {string} str
- * @return {boolean}
+ * @param  {String} str
+ * @return {Boolean}
  */
 var isUrl = function isUrl(str) {
   return /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i.test(str);
@@ -169,6 +169,20 @@ var getUrlParams = function getUrlParams(url) {
     return res[k] = v;
   });
   return res;
+};
+
+/**
+ * 时间格式化
+ * @param   {Number} time 毫秒数，默认为当前时间毫秒数
+ * @returns {String} 返回格式：YYYY-MM-DD hh:mm:ss
+ */
+var timeFormat = function timeFormat(time) {
+  if (time === void 0) {
+    time = +new Date();
+  }
+
+  var date = new Date(time + 8 * 3600 * 1000);
+  return date.toJSON().substr(0, 19).replace('T', ' ');
 };
 
 function _typeof(obj) {
@@ -218,4 +232,4 @@ var type = function type(value) {
 
 // device
 
-export { getExplore, getOS, getUrlParams, isEmail, isIdCard, isMobile, isPhoneNum, isUrl, milliFormat, randomColor, randomNum, type };
+export { getExplore, getOS, getUrlParams, isEmail, isIdCard, isMobile, isPhoneNum, isUrl, milliFormat, randomColor, randomNum, timeFormat, type };
