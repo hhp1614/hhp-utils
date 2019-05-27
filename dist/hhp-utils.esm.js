@@ -81,4 +81,93 @@ var type = function type(value) {
   return _typeof(value);
 };
 
-export { getUrlParams, randomColor, type };
+/**
+ * @file 获取浏览器信息
+ */
+
+/**
+ * 获取浏览器信息
+ * @param ua {string} UserAgent 默认取当前 UA
+ * @returns {IExplore} 浏览器信息对象
+ */
+var getExplore = function getExplore(ua) {
+  if (ua === void 0) {
+    ua = navigator.userAgent;
+  }
+
+  var sys = {};
+  var s;
+  (s = ua.match(/rv:([\d.]+)\) like gecko/i)) ? sys.ie = s[1] : (s = ua.match(/msie ([\d\.]+)/i)) ? sys.ie = s[1] : (s = ua.match(/edge\/([\d\.]+)/i)) ? sys.edge = s[1] : (s = ua.match(/firefox\/([\d\.]+)/i)) ? sys.firefox = s[1] : (s = ua.match(/(?:opera|opr).([\d\.]+)/i)) ? sys.opera = s[1] : (s = ua.match(/chrome\/([\d\.]+)/i)) ? sys.chrome = s[1] : (s = ua.match(/version\/([\d\.]+).*safari/i)) ? sys.safari = s[1] : 0; // 根据关系进行判断
+
+  if (sys.ie) return {
+    type: 'IE',
+    version: sys.ie
+  };
+  if (sys.edge) return {
+    type: 'EDGE',
+    version: sys.edge
+  };
+  if (sys.firefox) return {
+    type: 'Firefox',
+    version: sys.firefox
+  };
+  if (sys.chrome) return {
+    type: 'Chrome',
+    version: sys.chrome
+  };
+  if (sys.opera) return {
+    type: 'Opera',
+    version: sys.opera
+  };
+  if (sys.safari) return {
+    type: 'Safari',
+    version: sys.safari
+  };
+  return {
+    type: 'Unkonwn',
+    version: ''
+  };
+};
+
+/**
+ * @file 获取操作系统类型
+ */
+
+/**
+ * 获取操作系统类型
+ * @returns {string} 操作系统类型
+ */
+var getOS = function getOS() {
+  try {
+    var userAgent = navigator.userAgent;
+    var appVersion = navigator.appVersion;
+    if (/mac/i.test(appVersion)) return 'MacOSX';
+    if (/win/i.test(appVersion)) return 'windows';
+    if (/linux/i.test(appVersion)) return 'linux';
+    if (/iphone/i.test(userAgent) || /ipad/i.test(userAgent) || /ipod/i.test(userAgent)) return 'ios';
+    if (/android/i.test(userAgent)) return 'android';
+    if (/win/i.test(appVersion) && /phone/i.test(userAgent)) return 'windowsPhone';
+    return 'Unkonwn';
+  } catch (err) {
+    return 'Unkonwn';
+  }
+};
+
+/**
+ * @file 是否为移动端
+ */
+
+/**
+ * @returns {boolean} 是否为移动端
+ */
+var isMobile = function isMobile(ua) {
+  if (ua === void 0) {
+    ua = navigator.userAgent;
+  }
+
+  return !!ua.match(/(iPhone|iPod|Android|ios)/i);
+};
+
+// url
+
+export { getExplore, getOS, getUrlParams, isMobile, randomColor, type };

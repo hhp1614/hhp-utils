@@ -3,7 +3,7 @@
  */
 
 interface IUrlParams {
-  [key: string]: string;
+  [key: string]: string
 }
 
 /**
@@ -14,10 +14,10 @@ interface IUrlParams {
 export const getUrlParams = (
   url: string = window.location.href
 ): IUrlParams => {
-  const res: IUrlParams = {};
-  const reg: RegExp = /([^?&=]+)=([^?&]+)/g;
+  const res: IUrlParams = {}
+  const reg: RegExp = /([^?&=]+)=([^?&]+)/g
 
-  url.replace(reg, (_, k, v) => (res[k] = v));
+  url.replace(reg, (_, k, v) => (res[k] = v))
 
-  return res;
-};
+  return res
+}

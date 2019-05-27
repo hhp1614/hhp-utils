@@ -6,8 +6,9 @@
   "module": "dist/hhp-utils.esm.js",
   "types": "dist/main.d.ts",
   "scripts": {
-    "test": "mocha -r ts-node/register src/**/*.spec.ts",
-    "build": "bili src/main.ts --file-name hhp-utils[min].[format].js --format umd,umd-min,esm,esm-min --module-name hhpUtils --global.final-from final-from",
+    "test": "npm run format && mocha -r ts-node/register src/**/*.spec.ts",
+    "format": "prettier --write src/**/*.ts",
+    "build": "npm run format && bili src/main.ts --file-name hhp-utils[min].[format].js --format umd,umd-min,esm,esm-min --module-name hhpUtils --global.final-from final-from",
     "prepublishOnly": "npm run test && npm run build",
     "postversion": "git push && git push --tags"
   },
@@ -26,6 +27,7 @@
     "bili": "^4.8.0",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
+    "prettier": "^1.17.1",
     "rollup-plugin-typescript2": "^0.21.1",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5",

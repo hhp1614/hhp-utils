@@ -21,22 +21,22 @@ yarn add hhp-utils --save
 
 ```ts
 // 按需引入（推荐）
-import { getUrlParams } from 'hhp-utils';
+import { getUrlParams } from 'hhp-utils'
 
-const url = 'https://hhp1614.com/?name=hhp1614&pass=1234';
-const urlParams = getUrlParams(url);
+const url = 'https://hhp1614.com/?name=hhp1614&pass=1234'
+const urlParams = getUrlParams(url)
 
-console.log('urlParams', urlParams);
+console.log('urlParams', urlParams)
 ```
 
 ```ts
 // 全部引入
-import * as hhpUtils from 'hhp-utils';
+import * as hhpUtils from 'hhp-utils'
 
-const url = 'https://hhp1614.com/?name=hhp1614&pass=1234';
-const urlParams = hhpUtils.getUrlParams(url);
+const url = 'https://hhp1614.com/?name=hhp1614&pass=1234'
+const urlParams = hhpUtils.getUrlParams(url)
 
-console.log('urlParams', urlParams);
+console.log('urlParams', urlParams)
 ```
 
 - 浏览器使用
@@ -46,9 +46,9 @@ console.log('urlParams', urlParams);
 ```html
 <script src="https://github.com/hhp1614/hhp-utils/blob/master/dist/hhp-utils.min.js"></script>
 <script>
-  const url = 'https://hhp1614.com/?name=hhp1614&pass=1234';
-  const result = hhpUtils.url.getUrlParams(url);
-  console.log(result);
+  const url = 'https://hhp1614.com/?name=hhp1614&pass=1234'
+  const result = hhpUtils.url.getUrlParams(url)
+  console.log(result)
 </script>
 ```
 
@@ -66,6 +66,12 @@ console.log('urlParams', urlParams);
 
   - [`type`](#type): 返回数据类型
 
+- [`device`](#device)
+
+  - [`getExplore`](#getExplore): 返回浏览器类型及版本
+  - [`getOS`](#getOS): 返回操作系统类型
+  - [`isMobile`](#isMobile): 是否为移动端
+
 ## API
 
 ### `url`
@@ -75,13 +81,13 @@ console.log('urlParams', urlParams);
 获取 URL 参数对象，不传参数则默认使用 `window.location.href`
 
 ```ts
-getUrlParams(url = window.location.href): string;
+getUrlParams(url = window.location.href): string
 
 // 例子
-import { getUrlParams } from 'hhp-utils';
+import { getUrlParams } from 'hhp-utils'
 
-const urlParams = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234');
-console.log('urlParams', urlParams);
+const urlParams = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234')
+console.log('urlParams', urlParams)
 // => { name: 'hhp1614', pass: '1234' }
 ```
 
@@ -92,12 +98,12 @@ console.log('urlParams', urlParams);
 返回随机颜色，如 `#a1b2c3`
 
 ```ts
-randomColor(): string;
+randomColor(): string
 
 // 例子
-import { randomColor } from 'hhp-utils';
+import { randomColor } from 'hhp-utils'
 
-const color = randomColor();
+const color = randomColor()
 ```
 
 ### `type`
@@ -109,13 +115,62 @@ const color = randomColor();
 返回值：`number`、`string`、`boolean`、`undefined`、`null`、`object`、`array`、`date`、`error`、`regexp`、`function`、`math`、`json`、`symbol`
 
 ```ts
-type(variable: any): string;
+type(variable: any): string
 
 // 例子
-import { type } from 'hhp-utils';
+import { type } from 'hhp-utils'
 
-const numType = type(123); // 'number'
-const arrType = type([]); // 'array'
+const numType = type(123) // 'number'
+const arrType = type([]) // 'array'
+```
+
+### `device`
+
+#### `getExplore`
+
+获取浏览器类型及版本，不传参数则默认为当前浏览器 UA
+
+返回类型：`IE`、`EDGE`、`Firefox`、`Chrome`、`Opera`、`Safari`、`Unkonwn`
+
+```ts
+interface IExplore {
+  type: string
+  version: string
+}
+getExplore(ua: string = navigator.userAgent): IExplore
+
+// 例子
+import { getExplore } from 'hhp-utils'
+
+getExplore()
+```
+
+#### `getOS`
+
+获取当前操作系统类型
+
+返回值：`MacOSX`、`windows`、`linux`、`ios`、`android`、`windowsPhone`、`Unkonwn`
+
+```ts
+getOS(): string
+
+// 例子
+import { getOS } from 'hhp-utils'
+
+getOS()
+```
+
+#### `isMobile`
+
+判断是否为移动端，不传参数则默认为当前浏览器 UA
+
+```ts
+isMobile(ua: string = navigator.userAgent): boolean
+
+// 例子
+import { isMobile } from 'hhp-utils'
+
+isMobile()
 ```
 
 ## 说明
