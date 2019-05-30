@@ -1,6 +1,6 @@
 /**
  * 随机 16 进制颜色
- * @returns {String}
+ * @returns {string}
  */
 export const randomColor = (): string => {
   return `#${Math.floor(Math.random() * 0xffffff)

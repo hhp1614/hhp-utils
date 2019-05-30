@@ -55,37 +55,25 @@ console.log('urlParams', urlParams)
 ## 目录
 
 - [`device`](#device)
-
   - [`getExplore`](#getExplore) 返回浏览器类型及版本
   - [`getOS`](#getOS) 返回操作系统类型
   - [`isMobile`](#isMobile) 是否为移动端
-
 - [`format`](#format)
-
   - [`milliFormat`](#milliFormat) 数字千位分隔符
-
 - [`random`](#random)
-
   - [`randomColor`](#randomColor) 返回指定范围随机数
   - [`randomNum`](#randomNum) 返回随机数
-
 - [`regexp`](#regexp)
-
   - [`isEmail`](#isEmail) 判断是否为邮箱地址
   - [`isIdCard`](#isIdCard) 判断是否为身份证号
   - [`isPhoneNum`](#isPhoneNum) 判断是否为手机号
   - [`isUrl`](#isUrl) 判断是否为 URL 地址
-
 - [`time`](#time)
-
   - [`timeFormat`](#timeFormat) 时间格式化
-
+  - [`timeFormatPass`](#timeFormatPass) 距离现在已经过去的时间
 - [`type`](#type)
-
   - [`type`](#type) 返回数据类型
-
 - [`url`](#url)
-
   - [`getUrlParams`](#getUrlParams) 获取 URL 参数对象
 
 ## API
@@ -266,6 +254,26 @@ timeFormat(time) // 2019-05-27 18:05:35
 | 参数   | 类型     | 默认值        | 说明                           |
 | ------ | -------- | ------------- | ------------------------------ |
 | `time` | `number` | `+new Date()` | 毫秒数，默认为当前时间的毫秒数 |
+
+#### `timeFormatPass`
+
+距离现在已经过去的时间，返回：年前 | 月前 | 天前 | 小时前 | 分钟前 | 刚刚
+
+```ts
+timeFormatPass(startTime: number | string | Date): string
+
+// 例子
+import { timeFormatPass } from 'hhp-utils'
+
+const time = +new Date()
+// const time = new Date()
+// const time = '2019-5-30 18:41:35'
+timeFormatPass(time) // 刚刚
+```
+
+| 参数   | 类型                       | 默认值 | 说明               |
+| ------ | -------------------------- | ------ | ------------------ |
+| `time` | `number`、`string`、`Date` |        | 距离现在的具体时间 |
 
 ### `type`
 

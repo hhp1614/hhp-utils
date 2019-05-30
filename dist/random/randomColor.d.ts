@@ -1,5 +1,5 @@
 /**
  * 随机 16 进制颜色
- * @returns {String}
+ * @returns {string}
  */
 export declare const randomColor: () => string;

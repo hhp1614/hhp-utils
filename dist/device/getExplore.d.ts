@@ -9,7 +9,7 @@ interface IExplore {
 }
 /**
  * 获取浏览器信息
- * @param   {String} ua UserAgent 默认取当前 UA
+ * @param   {string} ua UserAgent 默认取当前 UA
  * @returns {IExplore} 浏览器信息对象
  */
 export declare const getExplore: (ua?: string) => IExplore;

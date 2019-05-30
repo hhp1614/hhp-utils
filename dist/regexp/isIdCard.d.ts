@@ -1,6 +1,6 @@
 /**
  * 判断是否为身份证号
- * @param   {String | Number} str
- * @returns {Boolean}
+ * @param   {string | number} str
+ * @returns {boolean}
  */
 export declare const isIdCard: (str: string | number) => boolean;

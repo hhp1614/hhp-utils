@@ -1,6 +1,6 @@
 /**
  * 判断是否为邮箱地址
- * @param   {String} str
- * @returns {Boolean}
+ * @param   {string} str
+ * @returns {boolean}
  */
 export declare const isEmail: (str: string) => boolean;
