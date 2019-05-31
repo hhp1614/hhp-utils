@@ -4,9 +4,8 @@
  * @returns {string} 年前 | 月前 | 天前 | 小时前 | 分钟前 | 刚刚
  */
 export const timeFormatPass = (startTime: number | string | Date): string => {
-  if (typeof startTime === 'string') startTime = +new Date(startTime)
   const currentTime: number = +new Date()
-  const time: number = currentTime - +startTime
+  const time: number = currentTime - +new Date(startTime)
   const day: number = parseInt(`${time / (1000 * 60 * 60 * 24)}`)
   const hour: number = parseInt(`${time / (1000 * 60 * 60)}`)
   const min: number = parseInt(`${time / (1000 * 60)}`)

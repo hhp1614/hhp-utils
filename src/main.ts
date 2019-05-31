@@ -21,6 +21,8 @@ export { getUrlParams } from './url/getUrlParams'
 
 // time
 export { timeFormat } from './time/timeFormat'
+export { timeFormatPass } from './time/timeFormatPass'
+export { timeFormatRemain } from './time/timeFormatRemain'
 
 // type
 export { type } from './type/type'

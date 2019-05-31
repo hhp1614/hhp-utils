@@ -186,6 +186,51 @@ var timeFormat = function timeFormat(time) {
   return date.toJSON().substr(0, 19).replace('T', ' ');
 };
 
+/**
+ * 距离现在已经过去的时间
+ * @param startTime {number|string|Date} 开始时间
+ * @returns {string} 年前 | 月前 | 天前 | 小时前 | 分钟前 | 刚刚
+ */
+var timeFormatPass = function timeFormatPass(startTime) {
+  var currentTime = +new Date();
+  var time = currentTime - +new Date(startTime);
+  var day = parseInt("" + time / (1000 * 60 * 60 * 24));
+  var hour = parseInt("" + time / (1000 * 60 * 60));
+  var min = parseInt("" + time / (1000 * 60));
+  var month = parseInt("" + day / 30);
+  var year = parseInt("" + month / 12);
+  if (year) return year + '年前';
+  if (month) return month + '月前';
+  if (day) return day + '天前';
+  if (hour) return hour + '小时前';
+  if (min) return min + '分钟前';
+  return '刚刚';
+};
+
+/**
+ * 现在距离结束时间的剩余时间
+ * @param endTime {number|string|Date} 结束时间
+ * @returns `${d}天 ${h}小时 ${m}分钟 ${s}秒`
+ */
+var timeFormatRemain = function timeFormatRemain(endTime) {
+  var start = +new Date();
+  var end = +new Date(endTime);
+  var difftime = end - start;
+  var d = 0;
+  var h = 0;
+  var m = 0;
+  var s = 0;
+
+  if (difftime >= 0) {
+    d = Math.floor(difftime / 1000 / 3600 / 24);
+    h = Math.floor(difftime / 1000 / 60 / 60 % 24);
+    m = Math.floor(difftime / 1000 / 60 % 60);
+    s = Math.floor(difftime / 1000 % 60);
+  }
+
+  return d + "\u5929 " + h + "\u5C0F\u65F6 " + m + "\u5206\u949F " + s + "\u79D2";
+};
+
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function (obj) {
@@ -233,4 +278,4 @@ var type = function type(value) {
 
 // device
 
-export { getExplore, getOS, getUrlParams, isEmail, isIdCard, isMobile, isPhoneNum, isUrl, milliFormat, randomColor, randomNum, timeFormat, type };
+export { getExplore, getOS, getUrlParams, isEmail, isIdCard, isMobile, isPhoneNum, isUrl, milliFormat, randomColor, randomNum, timeFormat, timeFormatPass, timeFormatRemain, type };

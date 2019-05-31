@@ -71,6 +71,7 @@ console.log('urlParams', urlParams)
 - [`time`](#time)
   - [`timeFormat`](#timeFormat) 时间格式化
   - [`timeFormatPass`](#timeFormatPass) 距离现在已经过去的时间
+  - [`timeFormatRemain`](#timeFormatRemain) 现在距离结束时间的剩余时间
 - [`type`](#type)
   - [`type`](#type) 返回数据类型
 - [`url`](#url)
@@ -271,9 +272,29 @@ const time = +new Date()
 timeFormatPass(time) // 刚刚
 ```
 
-| 参数   | 类型                       | 默认值 | 说明               |
-| ------ | -------------------------- | ------ | ------------------ |
-| `time` | `number`、`string`、`Date` |        | 距离现在的具体时间 |
+| 参数        | 类型                       | 默认值 | 说明               |
+| ----------- | -------------------------- | ------ | ------------------ |
+| `startTime` | `number`、`string`、`Date` |        | 距离现在的开始时间 |
+
+#### `timeFormatRemain`
+
+现在距离结束时间的剩余时间，返回：`${d}天 ${h}小时 ${m}分钟 ${s}秒`
+
+```ts
+timeFormatRemain(endTime: number | string | Date): string
+
+// 例子
+import { timeFormatRemain } from 'hhp-utils'
+
+timeFormatRemain(1559318400000)
+timeFormatRemain('2019-6-1')
+timeFormatRemain('2019-6-1 9:30:00')
+timeFormatRemain(new Date('2019-6-1'))
+```
+
+| 参数      | 类型                       | 默认值 | 说明               |
+| --------- | -------------------------- | ------ | ------------------ |
+| `endTime` | `number`、`string`、`Date` |        | 距离现在的结束时间 |
 
 ### `type`
 
@@ -284,7 +305,7 @@ timeFormatPass(time) // 刚刚
 返回值：`number`、`string`、`boolean`、`undefined`、`null`、`object`、`array`、`date`、`error`、`regexp`、`function`、`math`、`json`、`symbol`
 
 ```ts
-type(variable: any): string
+type(value: any): string
 
 // 例子
 import { type } from 'hhp-utils'
