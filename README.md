@@ -76,6 +76,7 @@ console.log('urlParams', urlParams)
   - [`type`](#type) 返回数据类型
 - [`url`](#url)
   - [`getUrlParams`](#getUrlParams) 获取 URL 参数对象
+  - [`urlQueryString`](#urlQueryString) 对象序列化
 
 ## API
 
@@ -321,14 +322,38 @@ const arrType = type([]) // 'array'
 获取 URL 参数对象，不传参数则默认使用 `window.location.href`
 
 ```ts
-getUrlParams(url = window.location.href): string
+interface IUrlParams {
+  [key: string]: any
+}
+getUrlParams(url = window.location.href): IUrlParams
 
 // 例子
 import { getUrlParams } from 'hhp-utils'
 
 const urlParams = getUrlParams('https://hhp1614.com/?name=hhp1614&pass=1234')
-console.log('urlParams', urlParams)
+console.log(urlParams)
 // => { name: 'hhp1614', pass: '1234' }
+```
+
+#### `urlQueryString`
+
+对象序列化
+
+```ts
+interface IUrlParams {
+  [key: string]: any
+}
+urlQueryString(obj: IUrlParams): string
+
+// 例子
+import { urlQueryString } from 'hhp-utils'
+
+const params = {
+  name: '管理员',
+  pass: '123456'
+}
+console.log(urlQueryString(params))
+// => name=%E7%AE%A1%E7%90%86%E5%91%98&pass=123456
 ```
 
 ## 说明

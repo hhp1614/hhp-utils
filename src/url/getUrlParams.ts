@@ -3,7 +3,7 @@
  */
 
 interface IUrlParams {
-  [key: string]: string
+  [key: string]: any
 }
 
 /**
@@ -14,10 +14,26 @@ interface IUrlParams {
 export const getUrlParams = (
   url: string = window.location.href
 ): IUrlParams => {
-  const res: IUrlParams = {}
-  const reg: RegExp = /([^?&=]+)=([^?&]+)/g
+  if (url.indexOf('?') === -1) {
+    return {}
+  }
+  let search: any =
+    url[0] === '?' ? url.substr(1) : url.substring(url.lastIndexOf('?') + 1)
+  if (search === '') {
+    return {}
+  }
+  search = search.split('&')
+  const query: IUrlParams = {}
+  for (let i = 0; i < search.length; i++) {
+    let pair = search[i].split('=')
+    query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '')
+  }
+  return query
 
-  url.replace(reg, (_, k, v) => (res[k] = v))
+  // const res: IUrlParams = {}
+  // const reg: RegExp = /([^?&=]+)=([^?&]+)/g
 
-  return res
+  // url.replace(reg, (_, k, v) => (res[k] = v))
+
+  // return res
 }
