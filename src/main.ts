@@ -18,6 +18,7 @@ export { isUrl } from './regexp/isUrl'
 
 // url
 export { getUrlParams } from './url/getUrlParams'
+export { urlQueryString } from './url/urlQueryString'
 
 // time
 export { timeFormat } from './time/timeFormat'

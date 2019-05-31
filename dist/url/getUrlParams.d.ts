@@ -2,7 +2,7 @@
  * @file URL 参数对象
  */
 interface IUrlParams {
-    [key: string]: string;
+    [key: string]: any;
 }
 /**
  * 获取 URL 参数对象

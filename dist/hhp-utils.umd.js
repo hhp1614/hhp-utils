@@ -170,12 +170,55 @@
       url = window.location.href;
     }
 
-    var res = {};
-    var reg = /([^?&=]+)=([^?&]+)/g;
-    url.replace(reg, function (_, k, v) {
-      return res[k] = v;
-    });
-    return res;
+    if (url.indexOf('?') === -1) {
+      return {};
+    }
+
+    var search = url[0] === '?' ? url.substr(1) : url.substring(url.lastIndexOf('?') + 1);
+
+    if (search === '') {
+      return {};
+    }
+
+    search = search.split('&');
+    var query = {};
+
+    for (var i = 0; i < search.length; i++) {
+      var pair = search[i].split('=');
+      query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+
+    return query; // const res: IUrlParams = {}
+    // const reg: RegExp = /([^?&=]+)=([^?&]+)/g
+    // url.replace(reg, (_, k, v) => (res[k] = v))
+    // return res
+  };
+
+  /**
+   * 对象序列化
+   * @param obj {IUrlParams} 参数对象
+   */
+  var urlQueryString = function urlQueryString(obj) {
+    if (!obj) return '';
+    var pairs = [];
+
+    for (var key in obj) {
+      var value = obj[key];
+
+      if (value instanceof Array) {
+        for (var i = 0; i < value.length; ++i) {
+          var k = encodeURIComponent(key + "[" + i + "]");
+          var v = encodeURIComponent(value[i]);
+          pairs.push(k + "=" + v);
+        }
+
+        continue;
+      }
+
+      pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
+    }
+
+    return pairs.join('&');
   };
 
   /**
@@ -206,7 +249,7 @@
     var month = parseInt("" + day / 30);
     var year = parseInt("" + month / 12);
     if (year) return year + '年前';
-    if (month) return month + '月前';
+    if (month) return month + '个月前';
     if (day) return day + '天前';
     if (hour) return hour + '小时前';
     if (min) return min + '分钟前';
@@ -299,6 +342,7 @@
   exports.timeFormatPass = timeFormatPass;
   exports.timeFormatRemain = timeFormatRemain;
   exports.type = type;
+  exports.urlQueryString = urlQueryString;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

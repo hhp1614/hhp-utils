@@ -9,7 +9,6 @@
     "test": "npm run format && mocha -r ts-node/register src/**/*.spec.ts",
     "format": "prettier --write src/**/*.ts",
     "build": "npm run format && bili src/main.ts --file-name hhp-utils[min].[format].js --format umd,umd-min,esm,esm-min --module-name hhpUtils --global.final-from final-from",
-    "prepublishOnly": "npm run test && npm run build",
     "postversion": "git push && git push --tags"
   },
   "keywords": [
