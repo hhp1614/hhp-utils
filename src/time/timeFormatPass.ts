@@ -12,7 +12,7 @@ export const timeFormatPass = (startTime: number | string | Date): string => {
   const month: number = parseInt(`${day / 30}`)
   const year: number = parseInt(`${month / 12}`)
   if (year) return year + '年前'
-  if (month) return month + '月前'
+  if (month) return month + '个月前'
   if (day) return day + '天前'
   if (hour) return hour + '小时前'
   if (min) return min + '分钟前'
