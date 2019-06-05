@@ -3,6 +3,10 @@ export { getExplore } from './device/getExplore'
 export { getOS } from './device/getOS'
 export { isMobile } from './device/isMobile'
 
+// func
+export { throttle } from './func/throttle'
+export { debounce } from './func/debounce'
+
 // format
 export { milliFormat } from './format/milliFormat'
 

@@ -58,6 +58,9 @@ console.log('urlParams', urlParams)
   - [`getExplore`](#getExplore) 返回浏览器类型及版本
   - [`getOS`](#getOS) 返回操作系统类型
   - [`isMobile`](#isMobile) 是否为移动端
+- [`func`](#func)
+  - [`throttle`](#throttle) 节流
+  - [`debounce`](#debounce) 防抖
 - [`format`](#format)
   - [`milliFormat`](#milliFormat) 数字千位分隔符
 - [`random`](#random)
@@ -127,6 +130,32 @@ isMobile(ua: string = navigator.userAgent): boolean
 import { isMobile } from 'hhp-utils'
 
 isMobile()
+```
+
+### `func`
+
+#### `throttle`
+
+节流
+
+```ts
+throttle(func: Function, delay: number = 160): Function
+
+// 例子
+const foo = () => {}
+throttle(foo, 50)
+```
+
+#### `debounce`
+
+防抖
+
+```ts
+debounce(func: Function, wait: number = 160): Function
+
+// 例子
+const foo = () => {}
+debounce(foo, 50)
 ```
 
 ### `format`

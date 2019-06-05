@@ -81,6 +81,73 @@
     return !!ua.match(/(iPhone|iPod|Android|ios)/i);
   };
 
+  var _this = undefined;
+  /**
+   * 节流
+   * @param func  回调函数
+   * @param delay 连续执行只会在一定时间内执行一遍回调
+   */
+
+
+  var throttle = function throttle(func, delay) {
+    if (delay === void 0) {
+      delay = 160;
+    }
+
+    var timeout = null;
+    var start = +new Date();
+    return function () {
+      var args = [];
+
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+
+      var curr = +new Date();
+      clearTimeout(timeout);
+
+      if (curr - start) {
+        // @ts-ignore
+        func.apply(_this, args);
+        start = curr;
+      } else {
+        timeout = setTimeout(function () {
+          // @ts-ignore
+          func.apply(_this, args);
+        }, delay);
+      }
+    };
+  };
+
+  var _this$1 = undefined;
+  /**
+   * 防抖
+   * @param func  回调函数
+   * @param wait 等待多久没有执行后才会执行回调函数
+   */
+
+
+  var debounce = function debounce(func, wait) {
+    if (wait === void 0) {
+      wait = 160;
+    }
+
+    var timeout = null;
+    return function () {
+      var args = [];
+
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        // @ts-ignore
+        func.apply(_this$1, args);
+      }, wait);
+    };
+  };
+
   /**
    * 数字千位分隔符
    * @param   {string | number} value 需要处理的数字
@@ -117,7 +184,7 @@
       max = 1;
     }
 
-    return Math.floor(min + Math.random() * (max - min));
+    return Math.floor(min + Math.random() * (max + 1 - min));
   };
 
   /**
@@ -154,71 +221,6 @@
    */
   var isUrl = function isUrl(str) {
     return /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/i.test(str);
-  };
-
-  /**
-   * @file URL 参数对象
-   */
-
-  /**
-   * 获取 URL 参数对象
-   * @param url {string} URL，默认为当前 RUL
-   * @returns {IUrlParams} URL 参数对象
-   */
-  var getUrlParams = function getUrlParams(url) {
-    if (url === void 0) {
-      url = window.location.href;
-    }
-
-    if (url.indexOf('?') === -1) {
-      return {};
-    }
-
-    var search = url[0] === '?' ? url.substr(1) : url.substring(url.lastIndexOf('?') + 1);
-
-    if (search === '') {
-      return {};
-    }
-
-    search = search.split('&');
-    var query = {};
-
-    for (var i = 0; i < search.length; i++) {
-      var pair = search[i].split('=');
-      query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-    }
-
-    return query; // const res: IUrlParams = {}
-    // const reg: RegExp = /([^?&=]+)=([^?&]+)/g
-    // url.replace(reg, (_, k, v) => (res[k] = v))
-    // return res
-  };
-
-  /**
-   * 对象序列化
-   * @param obj {IUrlParams} 参数对象
-   */
-  var urlQueryString = function urlQueryString(obj) {
-    if (!obj) return '';
-    var pairs = [];
-
-    for (var key in obj) {
-      var value = obj[key];
-
-      if (value instanceof Array) {
-        for (var i = 0; i < value.length; ++i) {
-          var k = encodeURIComponent(key + "[" + i + "]");
-          var v = encodeURIComponent(value[i]);
-          pairs.push(k + "=" + v);
-        }
-
-        continue;
-      }
-
-      pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
-    }
-
-    return pairs.join('&');
   };
 
   /**
@@ -325,8 +327,74 @@
     return _typeof(value);
   };
 
+  /**
+   * @file URL 参数对象
+   */
+
+  /**
+   * 获取 URL 参数对象
+   * @param url {string} URL，默认为当前 RUL
+   * @returns {IUrlParams} URL 参数对象
+   */
+  var getUrlParams = function getUrlParams(url) {
+    if (url === void 0) {
+      url = window.location.href;
+    }
+
+    if (url.indexOf('?') === -1) {
+      return {};
+    }
+
+    var search = url[0] === '?' ? url.substr(1) : url.substring(url.lastIndexOf('?') + 1);
+
+    if (search === '') {
+      return {};
+    }
+
+    search = search.split('&');
+    var query = {};
+
+    for (var i = 0; i < search.length; i++) {
+      var pair = search[i].split('=');
+      query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    }
+
+    return query; // const res: IUrlParams = {}
+    // const reg: RegExp = /([^?&=]+)=([^?&]+)/g
+    // url.replace(reg, (_, k, v) => (res[k] = v))
+    // return res
+  };
+
+  /**
+   * 对象序列化
+   * @param obj {IUrlParams} 参数对象
+   */
+  var urlQueryString = function urlQueryString(obj) {
+    if (!obj) return '';
+    var pairs = [];
+
+    for (var key in obj) {
+      var value = obj[key];
+
+      if (value instanceof Array) {
+        for (var i = 0; i < value.length; ++i) {
+          var k = encodeURIComponent(key + "[" + i + "]");
+          var v = encodeURIComponent(value[i]);
+          pairs.push(k + "=" + v);
+        }
+
+        continue;
+      }
+
+      pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
+    }
+
+    return pairs.join('&');
+  };
+
   // device
 
+  exports.debounce = debounce;
   exports.getExplore = getExplore;
   exports.getOS = getOS;
   exports.getUrlParams = getUrlParams;
@@ -338,6 +406,7 @@
   exports.milliFormat = milliFormat;
   exports.randomColor = randomColor;
   exports.randomNum = randomNum;
+  exports.throttle = throttle;
   exports.timeFormat = timeFormat;
   exports.timeFormatPass = timeFormatPass;
   exports.timeFormatRemain = timeFormatRemain;
