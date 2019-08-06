@@ -5,11 +5,11 @@
  * @returns {string}
  */
 export const milliFormat = (value: string | number, fixed?: number): string => {
-  const reg: RegExp = /\B(?=(\d{3})+(?=\b))(?<=\b(?<!\.)\d*)/g
-  if (fixed === undefined) return value.toString().replace(reg, ',')
+  const reg: RegExp = /\B(?=(\d{3})+(?=\b))(?<=\b(?<!\.)\d*)/g;
+  if (fixed === undefined) return value.toString().replace(reg, ',');
   const res = (+value)
     .toFixed(fixed)
     .toString()
-    .replace(reg, ',')
-  return res
-}
+    .replace(reg, ',');
+  return res;
+};

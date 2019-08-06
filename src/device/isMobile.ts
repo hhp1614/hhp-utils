@@ -4,5 +4,5 @@
  * @returns {boolean}
  */
 export const isMobile = (ua: string = navigator.userAgent): boolean => {
-  return !!ua.match(/(iPhone|iPod|Android|ios)/i)
-}
+  return !!ua.match(/(iPhone|iPod|Android|ios)/i);
+};

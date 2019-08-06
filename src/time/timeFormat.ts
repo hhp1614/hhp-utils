@@ -4,9 +4,9 @@
  * @returns {string} 返回格式：YYYY-MM-DD HH:mm:ss
  */
 export const timeFormat = (time: number = +new Date()): string => {
-  const date = new Date(time + 8 * 3600 * 1000)
+  const date = new Date(time + 8 * 3600 * 1000);
   return date
     .toJSON()
     .substr(0, 19)
-    .replace('T', ' ')
-}
+    .replace('T', ' ');
+};

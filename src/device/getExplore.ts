@@ -4,8 +4,8 @@
  * @property version {string} 浏览器版本
  */
 interface IExplore {
-  type: string
-  version: string
+  type: string;
+  version: string;
 }
 
 /**
@@ -14,9 +14,9 @@ interface IExplore {
  * @returns {IExplore} 浏览器信息对象
  */
 export const getExplore = (ua: string = navigator.userAgent): IExplore => {
-  let sys: any = {}
-  let s
-  ;(s = ua.match(/rv:([\d.]+)\) like gecko/i))
+  let sys: any = {};
+  let s;
+  (s = ua.match(/rv:([\d.]+)\) like gecko/i))
     ? (sys.ie = s[1])
     : (s = ua.match(/msie ([\d\.]+)/i))
     ? (sys.ie = s[1])
@@ -30,13 +30,13 @@ export const getExplore = (ua: string = navigator.userAgent): IExplore => {
     ? (sys.chrome = s[1])
     : (s = ua.match(/version\/([\d\.]+).*safari/i))
     ? (sys.safari = s[1])
-    : 0
+    : 0;
   // 根据关系进行判断
-  if (sys.ie) return { type: 'IE', version: sys.ie }
-  if (sys.edge) return { type: 'EDGE', version: sys.edge }
-  if (sys.firefox) return { type: 'Firefox', version: sys.firefox }
-  if (sys.chrome) return { type: 'Chrome', version: sys.chrome }
-  if (sys.opera) return { type: 'Opera', version: sys.opera }
-  if (sys.safari) return { type: 'Safari', version: sys.safari }
-  return { type: 'Unkonwn', version: '' }
-}
+  if (sys.ie) return { type: 'IE', version: sys.ie };
+  if (sys.edge) return { type: 'EDGE', version: sys.edge };
+  if (sys.firefox) return { type: 'Firefox', version: sys.firefox };
+  if (sys.chrome) return { type: 'Chrome', version: sys.chrome };
+  if (sys.opera) return { type: 'Opera', version: sys.opera };
+  if (sys.safari) return { type: 'Safari', version: sys.safari };
+  return { type: 'Unkonwn', version: '' };
+};

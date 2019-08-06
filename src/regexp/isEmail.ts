@@ -4,5 +4,5 @@
  * @returns {boolean}
  */
 export const isEmail = (str: string): boolean => {
-  return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(str)
-}
+  return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(str);
+};
