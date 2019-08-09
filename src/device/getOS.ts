@@ -10,8 +10,7 @@ try {
     userAgent = window.navigator.userAgent || '';
     appVersion = window.navigator.appVersion || '';
   }
-} catch (e) {
-}
+} catch (e) {}
 
 export const getOS = (): string => {
   try {

@@ -13,8 +13,7 @@ try {
   if (window) {
     userAgent = window.navigator.userAgent || '';
   }
-} catch (e) {
-}
+} catch (e) {}
 
 /**
  * 获取浏览器信息

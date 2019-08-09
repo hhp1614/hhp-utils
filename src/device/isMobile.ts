@@ -9,8 +9,7 @@ try {
   if (window) {
     userAgent = window.navigator.userAgent;
   }
-} catch (e) {
-}
+} catch (e) {}
 
 export const isMobile = (ua: string = userAgent): boolean => {
   return !!ua.match(/(iPhone|iPod|Android|ios)/i);

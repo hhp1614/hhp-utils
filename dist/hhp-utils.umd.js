@@ -6,9 +6,11 @@
 
   var userAgent = '';
 
-  if (window) {
-    userAgent = window.navigator.userAgent || '';
-  }
+  try {
+    if (window) {
+      userAgent = window.navigator.userAgent || '';
+    }
+  } catch (e) {}
   /**
    * 获取浏览器信息
    * @param   {string} ua UserAgent 默认取当前 UA
@@ -62,10 +64,12 @@
   var userAgent$1 = '';
   var appVersion = '';
 
-  if (window) {
-    userAgent$1 = window.navigator.userAgent || '';
-    appVersion = window.navigator.appVersion || '';
-  }
+  try {
+    if (window) {
+      userAgent$1 = window.navigator.userAgent || '';
+      appVersion = window.navigator.appVersion || '';
+    }
+  } catch (e) {}
 
   var getOS = function getOS() {
     try {
@@ -90,9 +94,11 @@
    */
   var userAgent$2 = '';
 
-  if (window) {
-    userAgent$2 = window.navigator.userAgent;
-  }
+  try {
+    if (window) {
+      userAgent$2 = window.navigator.userAgent;
+    }
+  } catch (e) {}
 
   var isMobile = function isMobile(ua) {
     if (ua === void 0) {
