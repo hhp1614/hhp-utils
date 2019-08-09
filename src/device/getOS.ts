@@ -17,15 +17,10 @@ export const getOS = (): string => {
     if (/mac/i.test(av)) return 'MacOSX';
     if (/win/i.test(av)) return 'windows';
     if (/linux/i.test(av)) return 'linux';
-    if (
-      /iphone/i.test(ua) ||
-      /ipad/i.test(ua) ||
-      /ipod/i.test(ua)
-    )
+    if (/iphone/i.test(ua) || /ipad/i.test(ua) || /ipod/i.test(ua))
       return 'ios';
     if (/android/i.test(userAgent)) return 'android';
-    if (/win/i.test(av) && /phone/i.test(ua))
-      return 'windowsPhone';
+    if (/win/i.test(av) && /phone/i.test(ua)) return 'windowsPhone';
     return 'Unkonwn';
   } catch (err) {
     return 'Unkonwn';

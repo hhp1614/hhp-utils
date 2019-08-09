@@ -4,14 +4,21 @@
   (global = global || self, factory(global.hhpUtils = {}));
 }(this, function (exports) { 'use strict';
 
+  var userAgent = '';
+
+  if (window) {
+    userAgent = window.navigator.userAgent || '';
+  }
   /**
    * 获取浏览器信息
    * @param   {string} ua UserAgent 默认取当前 UA
    * @returns {IExplore} 浏览器信息对象
    */
+
+
   var getExplore = function getExplore(ua) {
     if (ua === void 0) {
-      ua = navigator.userAgent;
+      ua = userAgent;
     }
 
     var sys = {};
@@ -52,16 +59,24 @@
    * 获取操作系统类型
    * @returns {string}
    */
+  var userAgent$1 = '';
+  var appVersion = '';
+
+  if (window) {
+    userAgent$1 = window.navigator.userAgent || '';
+    appVersion = window.navigator.appVersion || '';
+  }
+
   var getOS = function getOS() {
     try {
-      var userAgent = navigator.userAgent;
-      var appVersion = navigator.appVersion;
-      if (/mac/i.test(appVersion)) return 'MacOSX';
-      if (/win/i.test(appVersion)) return 'windows';
-      if (/linux/i.test(appVersion)) return 'linux';
-      if (/iphone/i.test(userAgent) || /ipad/i.test(userAgent) || /ipod/i.test(userAgent)) return 'ios';
-      if (/android/i.test(userAgent)) return 'android';
-      if (/win/i.test(appVersion) && /phone/i.test(userAgent)) return 'windowsPhone';
+      var ua = userAgent$1;
+      var av = appVersion;
+      if (/mac/i.test(av)) return 'MacOSX';
+      if (/win/i.test(av)) return 'windows';
+      if (/linux/i.test(av)) return 'linux';
+      if (/iphone/i.test(ua) || /ipad/i.test(ua) || /ipod/i.test(ua)) return 'ios';
+      if (/android/i.test(userAgent$1)) return 'android';
+      if (/win/i.test(av) && /phone/i.test(ua)) return 'windowsPhone';
       return 'Unkonwn';
     } catch (err) {
       return 'Unkonwn';
@@ -73,9 +88,15 @@
    * @param   {string} ua UserAgent 默认取当前 UA
    * @returns {boolean}
    */
+  var userAgent$2 = '';
+
+  if (window) {
+    userAgent$2 = window.navigator.userAgent;
+  }
+
   var isMobile = function isMobile(ua) {
     if (ua === void 0) {
-      ua = navigator.userAgent;
+      ua = userAgent$2;
     }
 
     return !!ua.match(/(iPhone|iPod|Android|ios)/i);
