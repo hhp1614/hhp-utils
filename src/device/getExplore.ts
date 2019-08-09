@@ -9,8 +9,11 @@ interface IExplore {
 }
 
 let userAgent = '';
-if (window) {
-  userAgent = window.navigator.userAgent || '';
+try {
+  if (window) {
+    userAgent = window.navigator.userAgent || '';
+  }
+} catch (e) {
 }
 
 /**

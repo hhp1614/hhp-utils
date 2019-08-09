@@ -5,9 +5,12 @@
 
 let userAgent = '';
 let appVersion = '';
-if (window) {
-  userAgent = window.navigator.userAgent || '';
-  appVersion = window.navigator.appVersion || '';
+try {
+  if (window) {
+    userAgent = window.navigator.userAgent || '';
+    appVersion = window.navigator.appVersion || '';
+  }
+} catch (e) {
 }
 
 export const getOS = (): string => {

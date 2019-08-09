@@ -5,8 +5,11 @@
  */
 
 let userAgent = '';
-if (window) {
-  userAgent = window.navigator.userAgent;
+try {
+  if (window) {
+    userAgent = window.navigator.userAgent;
+  }
+} catch (e) {
 }
 
 export const isMobile = (ua: string = userAgent): boolean => {
