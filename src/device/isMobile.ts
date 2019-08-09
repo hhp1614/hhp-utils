@@ -5,9 +5,8 @@
  */
 
 let userAgent = '';
-try {
-  userAgent = navigator.userAgent || '';
-} catch (e) {
+if (window) {
+  userAgent = window.navigator.userAgent;
 }
 
 export const isMobile = (ua: string = userAgent): boolean => {

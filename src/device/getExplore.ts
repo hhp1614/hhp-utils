@@ -10,7 +10,7 @@ interface IExplore {
 
 let userAgent = '';
 try {
-  userAgent = navigator.userAgent || '';
+  userAgent = window.navigator.userAgent || '';
 } catch (e) {
 }
 
