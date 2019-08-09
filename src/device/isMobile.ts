@@ -3,6 +3,13 @@
  * @param   {string} ua UserAgent 默认取当前 UA
  * @returns {boolean}
  */
-export const isMobile = (ua: string = navigator.userAgent): boolean => {
+
+let userAgent = '';
+try {
+  userAgent = navigator.userAgent || '';
+} catch (e) {
+}
+
+export const isMobile = (ua: string = userAgent): boolean => {
   return !!ua.match(/(iPhone|iPod|Android|ios)/i);
 };

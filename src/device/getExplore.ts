@@ -8,12 +8,18 @@ interface IExplore {
   version: string;
 }
 
+let userAgent = '';
+try {
+  userAgent = navigator.userAgent || '';
+} catch (e) {
+}
+
 /**
  * 获取浏览器信息
  * @param   {string} ua UserAgent 默认取当前 UA
  * @returns {IExplore} 浏览器信息对象
  */
-export const getExplore = (ua: string = navigator.userAgent): IExplore => {
+export const getExplore = (ua: string = userAgent): IExplore => {
   let sys: any = {};
   let s;
   (s = ua.match(/rv:([\d.]+)\) like gecko/i))
